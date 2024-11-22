@@ -3,30 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+
     <title>SevenPlusForecastApp</title>
   </head>
 
   <body>
     <header>
-      <form>
+      <form class="weather-form">
         <input type="search" placeholder="Enter a city..." required />
         <input type="submit" value="search" />
       </form>
     </header>
 
-    <div>
+    <div class="weather-app-data">
       <main>
-        <h1>Boksburg</h1>
+        <h1 class="weather-app-city">Boksburg</h1>
       </main>
 
-      <p>
+      <p class="weather-app-details">
         Monday 13:00, Mostly sunny
         <br />
-        Humidity : 45% , Wind : 10km/h
+        Humidity : <strong> 45% </strong>, Wind : <strong> 10km/h</strong>
       </p>
     </div>
 
-    <div>🌤 23°c</div>
+    <div class="weather-app-icon">🌤</div>
+    <div class="weather-app-temperature">23</div>
+    <div class="weather-app-unit">°c</div>
 
     <footer>
       This project was coded by
