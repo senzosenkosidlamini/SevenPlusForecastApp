@@ -87,21 +87,26 @@ main {
 }
 
 .temperature-details {
-  position: absolute;
-  top: 0;
+  display: flex;
+  justify-items: center;
 }
 
 .weather-app-icon {
+  display: flex;
+  justify-content: center;
   font-size: 50px;
-  margin-top: 22px;
 }
 
 .weather-app-temperature {
+  display: flex;
+  justify-content: center;
   font-size: 80px;
   margin-left: 10px;
   font-weight: bold;
 }
 
 .weather-app-unit {
+  display: flex;
+  justify-content: center;
   font-size: 30px;
 }
