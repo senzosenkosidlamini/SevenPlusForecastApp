@@ -5,32 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/style.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
     <title>SevenPlusForecastApp</title>
   </head>
 
   <body>
-    <header>
-      <form class="weather-form">
-        <input type="search" placeholder="Enter a city..." required />
-        <input type="submit" value="search" />
-      </form>
-    </header>
+    <div class="weather-app">
+      <header>
+        <form class="weather-form" id="weatherForm">
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            required
+            id="weather-form-input"
+            class="weather-form-input"
+          />
+          <input type="submit" value="search" class="weather-form-button" />
+        </form>
+      </header>
+    </div>
 
     <div class="weather-app-data">
       <main>
-        <h1 class="weather-app-city">Boksburg</h1>
+        <h1 class="weather-app-city" id="city">Boksburg</h1>
       </main>
 
       <p class="weather-app-details">
-        Monday 13:00, Mostly sunny
+        <span id="time"></span> <span id="discription"></span>Mostly sunny
         <br />
-        Humidity : <strong> 45% </strong>, Wind : <strong> 10km/h</strong>
+        Humidity : <strong id="humidity"> 45% </strong> Wind :
+        <strong id="wind-speed"> 10km/h</strong>
       </p>
     </div>
 
-    <div class="weather-app-icon">🌤</div>
-    <div class="weather-app-temperature">23</div>
-    <div class="weather-app-unit">°c</div>
+    <div class="temperature-details">
+      <div class="weather-app-icon" id="icon">
+        <img
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+        />
+      </div>
+      <div class="weather-app-temperature">23</div>
+      <div class="weather-app-unit">°c</div>
+    </div>
 
     <footer>
       This project was coded by
@@ -47,5 +64,7 @@
         >hosted on netlify</a
       >
     </footer>
+
+    <script src="src/index.js"></script>
   </body>
 </html>
