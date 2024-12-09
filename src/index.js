@@ -31,6 +31,7 @@ function formatDate(date) {
     "Saturday",
   ];
   let day = days[date.getDay()];
+
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -52,21 +53,32 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
-  let forecastHtml = " ";
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `    <div class="weather-forecast-day">
-        <div class="weather-forecast-date">Wednesday</div>
-        <div class="weather-forecast-icon">⛈</div>
+function displayForecast(response) {
+  let forecastHtml = "";
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `    <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${formatDay(day.time)}</div>
+        <img src ="${day.condition.icon_url}" class = "weather-forecast-icon"/>
         <div class="weather-forecast-temperatures">
-          <div class="weather-forecast-temperature"><strong>20°c</strong></div>
-          <div class="weather-forecast-temperature">10°c</div>
+          <div class="weather-forecast-temperature"><strong>${Math.round(
+            day.temperature.maximum
+          )}°c</strong></div>
+          <div class="weather-forecast-temperature">${Math.round(
+            day.temperature.minimum
+          )}°c</div>
         </div>
       </div>`;
+    }
   });
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
@@ -76,4 +88,3 @@ let weatherFormElement = document.querySelector("#weatherForm");
 weatherFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Boksburg");
-displayForecast();
